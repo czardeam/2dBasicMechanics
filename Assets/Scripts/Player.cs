@@ -6,11 +6,21 @@ public class Player : MonoBehaviour
 {
     Animator anim;
     Rigidbody2D rb;
+
+    [Header("Movement Details")]
     float xInput;
+    bool facingRight = true;
+
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce = 8f;
 
-    bool facingRight = true;
+    [Header("Collision Details")]
+    [SerializeField] float groundCheckDistance;
+    [SerializeField] LayerMask whatIsGround;
+     bool isGrounded;
+
+
+    
 
 
 
@@ -21,11 +31,10 @@ public class Player : MonoBehaviour
     }
 
 
-
-
     void Update()
     {
         HandleInput();
+        HandleCollision();
         HandleMovement();
         HandleAnimations();
         HandleFlip();
@@ -34,9 +43,9 @@ public class Player : MonoBehaviour
 
     private void HandleAnimations()
     {
-        bool isMoving = rb.linearVelocity.x != 0;
-
-        anim.SetBool("isMoving", isMoving);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetFloat("yVelocity", rb.linearVelocityY);
+        anim.SetFloat("xVelocity", rb.linearVelocityX);
     }
 
     private void HandleInput()
@@ -56,10 +65,17 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(xInput * moveSpeed, rb.linearVelocity.y);
     }
 
+    private void HandleCollision()
+    {
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+    }
+
     private void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        if (isGrounded)
+        { rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); }
     }
+
 
     private void HandleFlip()
     {
@@ -67,13 +83,19 @@ public class Player : MonoBehaviour
             Flip();
         else if (rb.linearVelocityX < 0 && facingRight == true)
             Flip();
-               
+
     }
     private void Flip()
     {
         transform.Rotate(0, -180, 0);
         facingRight = !facingRight;
-    }                                     
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3 (0, -groundCheckDistance));
+    }
 
 
 

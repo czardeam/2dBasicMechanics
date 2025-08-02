@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 86845759}
   - component: {fileID: 86845758}
   - component: {fileID: 86845757}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,8 +307,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.022487402, y: -0.26235294}
-  m_Size: {x: 0.7848401, y: 2.12437}
+  m_Offset: {x: 0.03, y: -0.28}
+  m_Size: {x: 0.8, y: 2.1}
   m_Direction: 0
 --- !u!50 &444623979
 Rigidbody2D:
@@ -323,10 +323,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.5
   m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 3.4
+  m_Material: {fileID: 6200000, guid: b337360b25b877e4b881567813a7180c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -350,7 +350,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  jumpForce: 4
+  jumpForce: 10
+  groundCheckDistance: 1.37
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &444623981
 Transform:
   m_ObjectHideFlags: 0
@@ -360,7 +364,7 @@ Transform:
   m_GameObject: {fileID: 444623977}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.96, y: -0.91, z: 0}
+  m_LocalPosition: {x: 8.61, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -586,7 +590,7 @@ Transform:
   m_GameObject: {fileID: 1024157096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -3.1, z: 0}
+  m_LocalPosition: {x: 0.525, y: 0.014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
