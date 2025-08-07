@@ -701,10 +701,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1056000785}
-  - component: {fileID: 1056000784}
   - component: {fileID: 1056000783}
+  - component: {fileID: 1056000784}
   - component: {fileID: 1056000782}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -769,6 +769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14115a0dff552047bcf25d47fea2dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redColorDuration: 2
+  timer: 0
 --- !u!212 &1056000784
 SpriteRenderer:
   m_ObjectHideFlags: 0
